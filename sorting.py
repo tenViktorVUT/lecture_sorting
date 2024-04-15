@@ -28,9 +28,11 @@ def read_data(file_name):
             iteration += 1
         return num_dict
 
-def selection_sort(numdict: dict):
+
+def selection_sort(numdict: dict, direction: bool = True):
     """
     sorts values in a dictionary numdict
+    :param direction: direction of the sort reverse == False
     :param numdict: dictionary of numbers
     :return: numdict: sorted dictionary of numbers
     """
@@ -38,12 +40,19 @@ def selection_sort(numdict: dict):
     for value in numdict.values():
         for i in range(0, len(value)):
             for num in value:
-                if num > value[i]:
-                    value[value.index(num)], value[i] = value[i], value[value.index(num)]
+                if direction:
+                    if num > value[i]:
+                        value[value.index(num)], value[i] = value[i], value[value.index(num)]
+                    else:
+                        continue
                 else:
-                    continue
+                    if num < value[i]:
+                        value[value.index(num)], value[i] = value[i], value[value.index(num)]
+                    else:
+                        continue
 
     return numdict
+
 
 def main():
     # print(os.getcwd())
