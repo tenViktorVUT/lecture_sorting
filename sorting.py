@@ -84,10 +84,48 @@ def bubble_sort(num_dict: dict):
     return num_dict
 
 
+def insertion_sort(num_list: list):
+    """
+    insertion sort
+    :param num_list: unsorted list
+    :return: num_list: sorted list
+    """
+
+    # sort_list = [num_list[0]]
+
+    for i in range(1, len(num_list)):
+        num = num_list.pop(i)
+
+        """
+        for sort_num in sort_list:
+            idx = sort_list.index(sort_num)
+            if num < sort_num:
+                num_list.insert(idx, num)
+                sort_list.insert(idx, num)
+                break
+            else:
+                continue
+        """
+
+        for idx in range(0, i):
+            if num <= num_list[idx]:
+                num_list.insert(idx, num)
+                break
+            elif (idx == i - 1 and
+                    num > num_list[idx]):
+                num_list.insert(i, num)
+            else:
+                continue
+
+    return num_list
+
+
+
 def main():
     # print(os.getcwd())
     # print(selection_sort(read_data("numbers.csv")))
-    print(bubble_sort(num_dict=read_data("numbers.csv")))
+    # print(bubble_sort(num_dict=read_data("numbers.csv")))
+    print(insertion_sort(num_list=(read_data("numbers.csv")["series_1"])))
     # pass
 
 
