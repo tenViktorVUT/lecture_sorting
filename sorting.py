@@ -31,14 +31,24 @@ def read_data(file_name):
 def selection_sort(numdict: dict):
     """
     sorts values in a dictionary numdict
-    :param numdict:
-    :return:
+    :param numdict: dictionary of numbers
+    :return: numdict: sorted dictionary of numbers
     """
+
+    for value in numdict.values():
+        for i in range(0, len(value)):
+            for num in value:
+                if num > value[i]:
+                    value[value.index(num)], value[i] = value[i], value[value.index(num)]
+                else:
+                    continue
+
+    return numdict
 
 def main():
     # print(os.getcwd())
-    print(read_data("numbers.csv"))
-    pass
+    print(selection_sort(read_data("numbers.csv")))
+    # pass
 
 
 if __name__ == '__main__':
